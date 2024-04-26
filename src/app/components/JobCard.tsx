@@ -24,7 +24,7 @@ function JobCard({ item }: JobCardType) {
       initial="hidden"
       animate="visible"
       custom={`${item.id}`}
-      className="relative w-[31.53.%]"
+      className="relative w-full"
     >
       <div
         style={{ background: item.logoBackground }}
