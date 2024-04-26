@@ -38,7 +38,7 @@ function GlobalContextProvider({ children }: { children: ReactNode }) {
   const [titleInputValue, setTitleInputValue] = useState("");
   const [locatinInputValue, setLocationInputValue] = useState("");
   const [toggle, setToggle] = useState(false);
-  console.log(toggle,   'Toggle')
+  console.log(toggle, "Toggle");
 
   let filteredData: DataType[] = [];
   const titlehandleClick = (value: string) => {
@@ -76,14 +76,30 @@ function GlobalContextProvider({ children }: { children: ReactNode }) {
     setLocationInputValue(e.target.value);
   };
 
+  // useEffect(() => {
+  //   const handleResize = () => {
+  //     setScreenWidth(window.innerWidth);
+  //   };
+  //   window.addEventListener("resize", handleResize);
+  //   return () => {
+  //     window.removeEventListener("resize", handleResize);
+  //   };
+  // }, []);
+
   useEffect(() => {
     const handleResize = () => {
       setScreenWidth(window.innerWidth);
     };
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
+
+    // Check if window is defined before using it
+    if (typeof window !== "undefined") {
+      window.addEventListener("resize", handleResize);
+
+      // Cleanup function
+      return () => {
+        window.removeEventListener("resize", handleResize);
+      };
+    }
   }, []);
 
   return (
@@ -103,7 +119,7 @@ function GlobalContextProvider({ children }: { children: ReactNode }) {
         locationHandleClick,
         handleFilterLocation,
         toggle,
-        setToggle
+        setToggle,
       }}
     >
       {children}
