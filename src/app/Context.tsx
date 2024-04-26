@@ -14,7 +14,7 @@ import jobsdata from "./data.json";
 export const GlobalContext = createContext<GlobalContextType | null>(null);
 
 type GlobalContextType = {
-  screenWidth: number;
+  // screenWidth: number;
   data: DataType[];
   setData: Dispatch<SetStateAction<DataType[]>>;
   handleFilterTitle: (e: ChangeEvent<HTMLInputElement>) => void;
@@ -29,10 +29,14 @@ type GlobalContextType = {
   handleFilterLocation: (e: ChangeEvent<HTMLInputElement>) => void;
   toggle: boolean;
   setToggle: (value: boolean) => void;
+
+
+  isDesktop: boolean;
+  isTablet: boolean
 };
 
 function GlobalContextProvider({ children }: { children: ReactNode }) {
-  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+  // const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [data, setData] = useState<DataType[]>(jobsdata);
   const [isChacked, setIsCheckes] = useState(false);
   const [titleInputValue, setTitleInputValue] = useState("");
@@ -55,6 +59,7 @@ function GlobalContextProvider({ children }: { children: ReactNode }) {
       );
     }
     setData(filteredData);
+    
   };
 
   const locationHandleClick = (value: string) => {
@@ -80,32 +85,78 @@ function GlobalContextProvider({ children }: { children: ReactNode }) {
   //   const handleResize = () => {
   //     setScreenWidth(window.innerWidth);
   //   };
-  //   window.addEventListener("resize", handleResize);
-  //   return () => {
-  //     window.removeEventListener("resize", handleResize);
-  //   };
+
+
+  //   if (typeof window !== "undefined") {
+  //     window.addEventListener("resize", handleResize);
+
+  //     return () => {
+  //       window.removeEventListener("resize", handleResize);
+  //     };
+  //   }
   // }, []);
 
-  useEffect(() => {
-    const handleResize = () => {
-      setScreenWidth(window.innerWidth);
-    };
+  //   const [isDesktop, setIsDesktop] = useState(true);
+  //   const [isTablet, setIsTablet] = useState(true)
+  //   let windowWidth: windowWidthType;
+  //   type windowWidthType = number;
+  //   const checkWindowSize = () => {
+  //     if (typeof window !== "undefined") {
+  //       windowWidth = window.innerWidth;
+  //     }
+  //     if (windowWidth >= 1024) {
+  //       setIsDesktop(true)
+  //     }
+  //     if (windowWidth >= 768 && windowWidth < 1014) {
+  //       setIsTablet(true)
+  //     }
+  //     else {
+  //       setIsDesktop(false)
+  //       setIsTablet(false)
+  //     }
+  //   };
 
-    // Check if window is defined before using it
+  // useEffect(() => {
+  //   checkWindowSize()
+  // }, [isDesktop])
+
+  // if (typeof window !== "undefined") {
+  //   window.addEventListener('resize', checkWindowSize)
+  // }
+
+  const [isDesktop, setIsDesktop] = useState(false);
+  const [isTablet, setIsTablet] = useState(false);
+
+  let windowWidth: windowWidthType;
+  type windowWidthType = number;
+
+  const checkWindowSize = () => {
     if (typeof window !== "undefined") {
-      window.addEventListener("resize", handleResize);
-
-      // Cleanup function
-      return () => {
-        window.removeEventListener("resize", handleResize);
-      };
+      windowWidth = window.innerWidth;
     }
-  }, []);
+    if (windowWidth >= 1024) {
+      setIsDesktop(true);
+    }
+    if (windowWidth >= 768 && windowWidth < 1014) {
+      setIsTablet(true);
+    } else {
+      setIsDesktop(false);
+      setIsTablet(false);
+    }
+  };
+
+  useEffect(() => {
+    checkWindowSize();
+  }, [isDesktop]);
+
+  if (typeof window !== "undefined") {
+    window.addEventListener("resize", checkWindowSize);
+  }
 
   return (
     <GlobalContext.Provider
       value={{
-        screenWidth,
+        // screenWidth,
         data,
         setData,
         handleFilterTitle,
@@ -120,6 +171,10 @@ function GlobalContextProvider({ children }: { children: ReactNode }) {
         handleFilterLocation,
         toggle,
         setToggle,
+
+
+        isDesktop, 
+        isTablet
       }}
     >
       {children}

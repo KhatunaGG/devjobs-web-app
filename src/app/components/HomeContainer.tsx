@@ -18,7 +18,7 @@ const HomeContainer = () => {
       items-center bg-transparent  mb-[104px]"
       >
         {data.map((item, i) => (
-          <Link href={`/${item.id}`} key={i}>
+          <Link href={`/job/${item.id}`} key={i}>
             <JobCard
               item={item}
             />
