@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { Inter, Kumbh_Sans } from "next/font/google";
+import { Kumbh_Sans } from "next/font/google";
 import "./globals.css";
 import GlobalContextProvider from "./Context";
-import Header from "./components/Header";
+
 
 const kumbhSans = Kumbh_Sans({
   subsets: ["latin"],
@@ -22,7 +22,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body  className={kumbhSans.className}>
-    
         <GlobalContextProvider>
           {children}
         </GlobalContextProvider>

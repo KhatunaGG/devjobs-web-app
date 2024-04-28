@@ -40,7 +40,7 @@ const FilterSection = () => {
 
   return (
     <div
-      className={`container ${isDark ? "bg-[#19202D]" : "bg-[#fff]"
+      className={`${isDark ? "bg-[#19202D]" : "bg-[#fff]"
         } transition duration-500 w-[87.2%] md:w-[89.71%] lg:w-[77.03%] lg:min-w-[1110px] mx-auto  py-4 shadow-lg rounded-[6px] mt-[-45px] md:mt-[-60px] lg:mt-[-45px] `}
     >
       <div className="flex flex-row items-center justify-between pl-6 pr-4 ">

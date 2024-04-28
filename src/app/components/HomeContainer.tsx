@@ -10,7 +10,7 @@ import { DataType } from "../Interface";
 const HomeContainer = () => {
   const context = useContext(GlobalContext);
   if (!context) return null;
-  const { data, setArrLength, arrLangth } = context;
+  const { data, arrLangth } = context;
 
 
   return (

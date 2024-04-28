@@ -42,7 +42,7 @@ const JobDetail = ({ params }: JobDetailPropsType) => {
 
   return (
     <>
-      <div className="container bg-transparent w-[87.2%] md:w-[89.71%] lg:w-[50.69%] mx-auto mt-[-15px] md:mt-[-33px] lg:mt-[-45px]  relative z-30">
+      <div className="bg-transparent w-[87.2%] md:w-[89.71%] lg:w-[50.69%] mx-auto mt-[-15px] md:mt-[-33px] lg:mt-[-45px]  relative z-30">
         <div
           className={`${
             isDark ? "bg-[#19202D]" : "bg-[#fff]"
@@ -54,8 +54,6 @@ const JobDetail = ({ params }: JobDetailPropsType) => {
               style={{ backgroundColor: jobDetaileData[0].logoBackground }}
               className=" h-[50px]  rounded-[15px] flex items-center justify-center absolute top-[-25px]
             md:static md:w-[140px] md:h-[140px] md:rounded-none px-1 md:px-0 lg:px-0"
-            
-            
             >
               <motion.div
                 variants={variants}
@@ -141,7 +139,6 @@ const JobDetail = ({ params }: JobDetailPropsType) => {
           <RoleSection roleContent={jobDetaileData[0].role} />
         </div>
       </div>
-
       <BgFooter jobDetaileData={jobDetaileData} isDark={isDark} />
     </>
   );

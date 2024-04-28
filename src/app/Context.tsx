@@ -134,7 +134,7 @@ function GlobalContextProvider({ children }: { children: ReactNode }) {
       }}
     >
       <div
-        className={`context ${
+        className={`${
           isDark ? "bg-[#121721]" : "bg-[#f2f2f2]"
         } transition duration-500 w-full relative `}
       >

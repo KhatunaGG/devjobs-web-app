@@ -16,8 +16,6 @@ const variants: Variants = {
 };
 
 function JobCard({ item }: JobCardType) {
- 
-
   const context = useContext(GlobalContext);
   if (!context) return null;
   const { isDark, getFooterData } = context;
@@ -36,7 +34,7 @@ function JobCard({ item }: JobCardType) {
     >
       <div
         style={{ background: item.logoBackground }}
-        className={` w-[50px] h-[50px]  absolute top-[-25px] left-[32px] rounded-[15px] flex items-center justify-center`}
+        className={`w-[50px] h-[50px]  absolute top-[-25px] left-[32px] rounded-[15px] flex items-center justify-center`}
       >
         <img className="" src={item.logo} alt="" />
       </div>
@@ -49,7 +47,7 @@ function JobCard({ item }: JobCardType) {
             <span className="text-base font-normal text-[#6E8098]">
               {item.postedAt}
             </span>
-            <div className="dot w-[4px] h-[4px] bg-[#6E8098] rounded-full"></div>
+            <div className="w-[4px] h-[4px] bg-[#6E8098] rounded-full"></div>
             <span className="text-base font-normal text-[#6E8098]">
               {item.contract}
             </span>

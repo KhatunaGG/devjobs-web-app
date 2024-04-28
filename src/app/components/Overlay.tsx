@@ -23,7 +23,7 @@ const Overlay = () => {
   return (
     <>
       {overlay && (
-        <div className="w-full  bg-[#00000071] h-screen absolute top-0 left-0 z-40 flex items-center justify-center">
+        <div className="w-full bg-[#00000071] h-screen absolute top-0 left-0 z-40 flex items-center justify-center">
           <motion.div
             initial={{ y: "-300%" }}
             animate={{ y: overlay ? 0 : "-300%" }}

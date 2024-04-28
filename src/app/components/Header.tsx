@@ -34,7 +34,7 @@ const Header = () => {
       }}
       className="w-full h-[136px] bg-cover md:h-[160px] lg:h-[162px] relative"
     >
-      <div className="container w-[87.2%] md:w-[89.71%] lg:w-[77.03%] lg:min-w-[1110px] mx-auto pt-[32px] md:pt-[18px] lg:pt-[45px]">
+      <div className="w-[87.2%] md:w-[89.71%] lg:w-[77.03%] lg:min-w-[1110px] mx-auto pt-[32px] md:pt-[18px] lg:pt-[45px]">
         <div className="nav flex flex-row items-center justify-between">
           <Link href={"/"}>
             <svg

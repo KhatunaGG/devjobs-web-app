@@ -12,13 +12,13 @@ const BgFooter = ({ jobDetaileData, isDark }: BgFooterPropsType) => {
       } transition duration-500 w-full py-[25px] md:py-[23px] lg:py-[23px] mt-10 md:mt-[30px] lg:mt-[33px] `}
     >
       <div
-        className={` container w-[87.2%] md:w-[89.71%] lg:w-[50.69%] mx-auto 
+        className={`w-[87.2%] md:w-[89.71%] lg:w-[50.69%] mx-auto 
         `}
       >
         <div className={` w-full flex flex-row items-center justify-between`}>
           {jobDetaileData.length > 0 && (
             <div
-              className={` hidden md:flex md:flex-col md:gap-y-3 lg:flex lg:flex-col lg:gap-y-3 `}
+              className={`hidden md:flex md:flex-col md:gap-y-3 lg:flex lg:flex-col lg:gap-y-3 `}
             >
               <h2
                 className={`${
