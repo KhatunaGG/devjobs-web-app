@@ -16,7 +16,7 @@ const HomeContainer = () => {
   return (
     <>
       <div
-        className="w-full bg-green-200 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-[40px] gap-x-[30px]
+        className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-[40px] gap-x-[30px]
       items-center bg-transparent "
       >
         {data.slice(0, arrLangth).map((item: DataType, i: number) => (
