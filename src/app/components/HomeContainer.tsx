@@ -20,7 +20,7 @@ const HomeContainer = () => {
       items-center bg-transparent "
       >
         {data.map((item: DataType, i: number) => (
-          <Link href={`/job/${item.id}`} key={i}>
+          <Link href={`/job/${item.id.toString()}`} key={i}>
             <JobCard item={item} />
           </Link>
         ))}

@@ -16,6 +16,7 @@ const variants: Variants = {
 };
 
 function JobCard({ item }: JobCardType) {
+ 
 
   const context = useContext(GlobalContext);
   if (!context) return null;
@@ -31,7 +32,6 @@ function JobCard({ item }: JobCardType) {
       className="relative w-full"
       onClick={() => {
         getFooterData(item);
-
       }}
     >
       <div

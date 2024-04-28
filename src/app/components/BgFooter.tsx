@@ -4,7 +4,6 @@ import Button from "./Button";
 
 
 const BgFooter = ({ jobDetaileData, isDark }: BgFooterPropsType) => {
-  console.log(jobDetaileData, "from bgfooter");
 
   return (
     <div

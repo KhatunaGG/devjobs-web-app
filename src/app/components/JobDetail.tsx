@@ -13,10 +13,11 @@ const JobDetail = ({ params }: JobDetailPropsType) => {
   if (!context) return null;
   const { isDark } = context;
 
-  const jobDetaileData = data.filter((item) => item.id === Number(params[0]));
-
+  const jobDetaileData = data.filter((item) => item.id === Number(params));
+  
   const letters = jobDetaileData[0].company;
   const newLetters = Array.from(letters);
+
 
   const variants = {
     hidden: { opacity: 0 },
@@ -51,22 +52,23 @@ const JobDetail = ({ params }: JobDetailPropsType) => {
           <div className="w-full flex flex-col items-center md:flex-row md:gap-10 ">
             <div
               style={{ backgroundColor: jobDetaileData[0].logoBackground }}
-              className="w-[50px] h-[50px]  rounded-[15px] flex items-center justify-center absolute top-[-25px]
-            md:static md:w-[140px] md:h-[140px] md:rounded-none
-            "
+              className=" h-[50px]  rounded-[15px] flex items-center justify-center absolute top-[-25px]
+            md:static md:w-[140px] md:h-[140px] md:rounded-none px-1 md:px-0 lg:px-0"
+            
+            
             >
-              <motion.p
+              <motion.div
                 variants={variants}
                 initial="hidden"
                 animate="visible"
-                className="text-white font-bold text-base md:text-xl lowercase"
+                className="text-white font-bold text-base md:text-xl lowercase "
               >
                 {newLetters.map((letter, i) => (
                   <motion.span variants={child} key={i}>
                     {letter === " " ? "\u00A0" : letter}
                   </motion.span>
                 ))}
-              </motion.p>
+              </motion.div>
             </div>
 
             <div className="flex flex-col gap-[13.13px] items-center">
