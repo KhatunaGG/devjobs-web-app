@@ -1,13 +1,12 @@
-
-
-type RequirementsPropsType = {
-  itemContent: {
-    content: string;
-    items: string[];
-  };
-};
+"use client";
+import { useContext } from "react";
+import { GlobalContext } from "../Context";
+import { RequirementsPropsType } from "../Interface";
 
 const Requirements = ({ itemContent }: RequirementsPropsType) => {
+  const context = useContext(GlobalContext);
+  if (!context) return null;
+  const { isDark } = context;
 
   return (
     <div className="flex flex-col gap-[32px]">
@@ -15,7 +14,11 @@ const Requirements = ({ itemContent }: RequirementsPropsType) => {
         <h2 className="font-bold text-[20px] text-[#19202D] capitalize">
           Requirements
         </h2>
-        <p className="text-base font-normal text-[#6E8098] leading-[1.62]">
+        <p
+          className={`${
+            isDark ? "text-[#9DAEC2]" : "text-[#6E8098]"
+          } text-base font-normal  leading-[1.62]`}
+        >
           {itemContent.content}
         </p>
       </div>
@@ -23,7 +26,13 @@ const Requirements = ({ itemContent }: RequirementsPropsType) => {
       {itemContent.items.map((item, i) => (
         <div key={i} className="flex flex-row gap-[32px] items-start">
           <div className="dot w-[4px] h-[4px] bg-[#5964E0] rounded-full "></div>
-          <p className="text-base font-normal text-[#6E8098] leading-[1.62]">{item}</p>
+          <p
+            className={`${
+              isDark ? "text-[#9DAEC2]" : "text-[#6E8098]"
+            } text-base font-normal  leading-[1.62]`}
+          >
+            {item}
+          </p>
         </div>
       ))}
     </div>

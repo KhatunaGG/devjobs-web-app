@@ -1,10 +1,8 @@
-import React from "react";
-import { DataType } from "../Interface";
+"use client";
+import { useContext } from "react";
+import { JobCardType } from "../Interface";
 import { Variants, motion } from "framer-motion";
-
-type JobCardType = {
-  item: DataType;
-};
+import { GlobalContext } from "../Context";
 
 
 const variants: Variants = {
@@ -12,12 +10,18 @@ const variants: Variants = {
   visible: (i: number) => ({
     opacity: 1,
     transition: {
-      delay: 0.2 * i,
+      delay: 0.1 * i,
     },
   }),
 };
 
 function JobCard({ item }: JobCardType) {
+
+  const context = useContext(GlobalContext);
+  if (!context) return null;
+  const { isDark, getFooterData } = context;
+
+
   return (
     <motion.div
       variants={variants}
@@ -25,6 +29,10 @@ function JobCard({ item }: JobCardType) {
       animate="visible"
       custom={`${item.id}`}
       className="relative w-full"
+      onClick={() => {
+        getFooterData(item);
+
+      }}
     >
       <div
         style={{ background: item.logoBackground }}
@@ -32,8 +40,10 @@ function JobCard({ item }: JobCardType) {
       >
         <img className="" src={item.logo} alt="" />
       </div>
-
-      <div className="pl-8  bg-white  pt-[10.52%]   flex flex-col gap-[19.29%]  h-[228px] rounded-[6px] shadow-lg   ">
+      <div
+        className={`${isDark ? "bg-[#19202D]" : "bg-[#fff]"
+          } transition duration-500 pl-8  pt-[10.52%]   flex flex-col gap-[19.29%]  h-[228px] rounded-[6px] shadow-lg`}
+      >
         <div className="flex flex-col gap-[7.5%]">
           <div className="flex flex-roe items-center gap-4">
             <span className="text-base font-normal text-[#6E8098]">
@@ -44,7 +54,10 @@ function JobCard({ item }: JobCardType) {
               {item.contract}
             </span>
           </div>
-          <h2 className="text-[#19202D] font-bold text-[20px] ">
+          <h2
+            className={`${isDark ? "text-[#f2f2f2]" : "text-[#19202D]"
+              } font-bold text-[20px] `}
+          >
             {item.position}
           </h2>
           <p className="text-base font-normal text-[#6E8098]">{item.company}</p>

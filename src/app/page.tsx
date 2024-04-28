@@ -1,19 +1,24 @@
+import Button from "./components/Button";
 import FilterSection from "./components/FilterSection";
 import HomeContainer from "./components/HomeContainer";
-
+import Overlay from "./components/Overlay";
 
 export default function Home() {
   return (
-    <main className="main-home w-full relative ">
-      <div className="w-full absolute top-0 left-0 z-10">
+    <>
+    <Overlay />
+      <section className="container bg-transparent   mx-auto mt-[-15px] md:mt-[-33px] lg:mt-[-45px]  relative z-30">
         <FilterSection />
-        <section
-          className="container w-[87.2%] md:w-[89.71%] lg:w-[77.03%] mx-auto mt-[32px] md:mt-[45px] lg:mt-[80px] 
+        <div
+          className="container w-[87.2%]  md:w-[89.71%] lg:w-[77.03%] mx-auto mt-[32px] md:mt-[45px] lg:mt-[80px] 
          "
         >
           <HomeContainer />
-        </section>
+        </div>
+      </section>
+      <div className="container w-[87.2%]  md:w-[89.71%] lg:w-[77.03%] mx-auto py-[25px] md:py-[23px] lg:py-[23px] mt-10 md:mt-[30px] lg:mt-[33px] flex items-center justify-center">
+        <Button text='Load More' width='20%'  />
       </div>
-    </main>
+    </>
   );
 }

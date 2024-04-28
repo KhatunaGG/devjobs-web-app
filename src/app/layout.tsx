@@ -21,9 +21,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={kumbhSans.className}>
+      <body  className={kumbhSans.className}>
+    
         <GlobalContextProvider>
-          <Header />
           {children}
         </GlobalContextProvider>
       </body>

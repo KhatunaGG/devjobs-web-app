@@ -1,13 +1,14 @@
 "use client";
-
 import { useContext } from "react";
 import { GlobalContext } from "../Context";
+import { motion } from 'framer-motion'
+
+
 
 const FilterSection = () => {
   const context = useContext(GlobalContext);
   if (!context) return null;
   const {
-    setData,
     handleFilterTitle,
     titlehandleClick,
     setIsCheckes,
@@ -18,23 +19,44 @@ const FilterSection = () => {
     setLocationInputValue,
     locationHandleClick,
     handleFilterLocation,
+    isDark,
+    setOverlay,
+    overlay,
   } = context;
 
-  return (
 
-    <div className="container bg-[white] w-[87.2%] md:w-[89.71%] lg:w-[77.03%] mx-auto  py-4 shadow-lg rounded-[6px] mt-[-45px] md:mt-[-60px] lg:mt-[-45px] 
-    
-    ">
-      <div className="flex  bg-[white]  flex-row items-center justify-between pl-6 pr-4 ">
+  const variants = {
+    visible: {
+      opacity: 1, y: 0, transition: {
+        delay: 0.3,
+        staggerChildren: 0.05,
+        staggerDirection: -1,
+      }
+    },
+    hidden: { opacity: 0, y: 20 }
+  }
+
+
+
+  return (
+    <div
+      className={`container ${isDark ? "bg-[#19202D]" : "bg-[#fff]"
+        } transition duration-500 w-[87.2%] md:w-[89.71%] lg:w-[77.03%] mx-auto  py-4 shadow-lg rounded-[6px] mt-[-45px] md:mt-[-60px] lg:mt-[-45px] `}
+    >
+      <div className="flex    flex-row items-center justify-between pl-6 pr-4 ">
         <div className="search-block flex flex-row items-center lg:gap-4">
-          <img
+          <motion.img
+            variants={variants}
+            initial={'hidden'}
+            animate={'visible'}
             className="hidden md:flex lg:flex "
             src="assets/desktop/icon-search.svg"
             alt=""
           />
           <input
             onChange={handleFilterTitle}
-            className="border-none outline-none"
+            className={`${isDark ? "text-[#f2f2f2]" : "text-[#19202D]"
+              } border-none outline-none bg-transparent`}
             type="text"
             placeholder="Filter by title…"
             value={titleInputValue}
@@ -42,10 +64,15 @@ const FilterSection = () => {
         </div>
 
         <div className="location-block hidden md:flex md:flex-row md:gap-4 lg:gap-4">
-          <img src="assets/desktop/icon-location.svg" alt="" />
+          <motion.img
+            variants={variants}
+            initial={'hidden'}
+            animate={'visible'}
+            src="assets/desktop/icon-location.svg" alt="" />
           <input
             onChange={handleFilterLocation}
-            className="border-none outline-none"
+            className={`${isDark ? "text-[#f2f2f2]" : "text-[#19202D]"
+              } border-none outline-none bg-transparent`}
             type="text"
             placeholder="Filter by location…"
             value={locatinInputValue}
@@ -57,9 +84,14 @@ const FilterSection = () => {
             <input
               onChange={() => setIsCheckes(!isChacked)}
               type="checkbox"
-              className="w-5 h-5"
+              className="w-5 h-5 "
             />
-            <label htmlFor="">Full Time</label>
+            <label
+              className={`${isDark ? "text-[#f2f2f2]" : "text-[#19202D]"}`}
+              htmlFor=""
+            >
+              Full Time
+            </label>
             <img
               className="hidden"
               src="assets/desktop/icon-check.svg"
@@ -67,7 +99,8 @@ const FilterSection = () => {
             />
           </div>
           <img
-            className="md:hideden lg:hidden w-[20px] h-[20px]"
+            onClick={() => setOverlay(!overlay)}
+            className="md:hidden lg:hidden w-[20px] h-[20px]"
             src="/assets/mobile/icon-filter.svg"
             alt=""
           />
@@ -82,7 +115,7 @@ const FilterSection = () => {
                 setTitleInputValue("");
               }
             }}
-            className="bg-[#5964E0] p-[14px] md:py-[16px] md:px-[12px] lg:px-[35px] rounded-[5px] "
+            className="bg-[#5964E0] p-[14px] md:py-[16px] md:px-[12px] lg:px-[35px] rounded-[5px] hover:bg-[#939BF4] "
           >
             <div className=" w-[20px] h-[20px] md:hidden lg:hidden">
               <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">
@@ -100,7 +133,6 @@ const FilterSection = () => {
         </div>
       </div>
     </div>
-
   );
 };
 
