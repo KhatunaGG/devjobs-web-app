@@ -23,6 +23,7 @@ function GlobalContextProvider({ children }: { children: ReactNode }) {
   const [isMobile, setIsMobile] = useState(false);
   const [isDark, setIsDark] = useState(false);
   const [overlay, setOverlay] = useState(false);
+  const [arrLangth, setArrLength] = useState(12)
 
 
   const [footerData, setFooterData] = useState<DataType>();
@@ -127,7 +128,9 @@ function GlobalContextProvider({ children }: { children: ReactNode }) {
         getFooterData,
         isMobile,
         setOverlay,
-        overlay
+        overlay,
+        arrLangth,
+        setArrLength
       }}
     >
       <div

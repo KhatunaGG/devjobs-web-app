@@ -10,7 +10,7 @@ import { DataType } from "../Interface";
 const HomeContainer = () => {
   const context = useContext(GlobalContext);
   if (!context) return null;
-  const { data } = context;
+  const { data, setArrLength, arrLangth } = context;
 
 
   return (
@@ -19,7 +19,7 @@ const HomeContainer = () => {
         className="w-full bg-green-200 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-[40px] gap-x-[30px]
       items-center bg-transparent "
       >
-        {data.map((item: DataType, i: number) => (
+        {data.slice(0, arrLangth).map((item: DataType, i: number) => (
           <Link href={`/job/${item.id.toString()}`} key={i}>
             <JobCard item={item} />
           </Link>

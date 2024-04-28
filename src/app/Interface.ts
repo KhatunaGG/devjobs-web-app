@@ -70,6 +70,8 @@ export type GlobalContextType = {
     getFooterData: (val: DataType) => void;
     setOverlay: (value: boolean) => void;
     overlay: boolean;
+    arrLangth: number;
+    setArrLength: (value: number) => void;
 };
 
 export type BgFooterPropsType = {
